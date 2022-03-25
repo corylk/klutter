@@ -44,21 +44,26 @@ class MyApp extends StatelessWidget {
               default:
                 themeMode = ThemeMode.system;
             }
-            return MaterialApp(
-              title: 'Klutter',
-              theme: ThemeData.light(),
-              themeMode: themeMode,
-              darkTheme: ThemeData.dark(),
-              home: ServerPicker(),
-              routes: {
-                ServerHome.routeName: (context) => ServerHome(),
-                ServerPicker.routeName: (context) => ServerPicker(),
-                BookScreen.routeName: (context) => BookScreen(),
-                SeriesScreen.routeName: (context) => SeriesScreen(),
-                Reader.routeName: (context) => Reader(),
-                LibraryScreen.routeName: (context) => LibraryScreen(),
-                CollectionScreen.routeName: (context) => CollectionScreen(),
+            return Shortcuts(
+              shortcuts: {
+                LogicalKeySet(LogicalKeyboardKey.select): ActivateIntent(),
               },
+              child: MaterialApp(
+                title: 'Klutter',
+                theme: ThemeData.light(),
+                themeMode: themeMode,
+                darkTheme: ThemeData.dark(),
+                home: ServerPicker(),
+                routes: {
+                  ServerHome.routeName: (context) => ServerHome(),
+                  ServerPicker.routeName: (context) => ServerPicker(),
+                  BookScreen.routeName: (context) => BookScreen(),
+                  SeriesScreen.routeName: (context) => SeriesScreen(),
+                  Reader.routeName: (context) => Reader(),
+                  LibraryScreen.routeName: (context) => LibraryScreen(),
+                  CollectionScreen.routeName: (context) => CollectionScreen(),
+                },
+              );
             );
           },
         );
